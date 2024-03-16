@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block h1_header %}
+Agrega tu crónica viajera
+<h3>Comparte tu aventura</h3>
+{% endblock h1_header %}
+
+{% block main %}
+<section class="bg-light">
+    <div class="container">
+        <form class="p-3 p-lg-4" action={% url "crear_cronica" %} method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table table-borderless col-md-5 fst-italic">
+                {{form.media}}
+                {{form.as_table}}
+            </table>
+            <br>
+            <input class="btn btn-primary"  type="submit" value="Agregar">
+            <a class="btn btn-primary" href={% url 'cronicas' %} role="button"> Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock main %}

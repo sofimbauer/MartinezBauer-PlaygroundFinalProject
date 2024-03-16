@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block h1_header %}
+Iniciar Sesión
+<h3>Ingresá con tu cuenta</h3>
+{% endblock h1_header %}
+
+{% block main%}
+<section class="bg-light">
+    <div class="container">
+        <form class="p-3 p-lg-4" action={% url 'login' %} method='POST'>
+            {% csrf_token %}
+            <table class="col-md-5 fst-italic">
+                {{formulario.as_table}}
+            </table>
+            <br>
+            <input type="submit" value='Ingresar' class="btn btn-outline-primary fst-italic">
+            
+        </form>
+        <div class="container">
+            <p>Aún no tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+        </div>
+    </div>
+</section>
+{% endblock main%}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block h1_header %}
+Crónicas viajeras
+<h3>Explora el Mundo a Través de Nuestras Crónicas</h3>
+{% endblock h1_header %}
+{% block main %}
+<section class="bg-light py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <a class="btn btn-outline-primary fst-italic mb-3" href="{% url 'crear_cronica' %}">Crear Crónica</a>
+                {% if cronicas %}
+                    <ul class="list-group">
+                        {% for cronica in cronicas %}
+                            <li class="list-group-item">
+                                <h3 class="mb-0">{{ cronica.destino }} - {{ cronica.autor }}</h3>
+                                <p class="mb-1">Fecha del viaje: {{ cronica.fecha_viaje }}</p>
+                                <a href="{% url 'detalle_cronica' cronica.id %}" class="btn btn-primary">Detalle</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <form class="p-3 p-lg-4 lead fst-italic" method="POST">
+                        {% csrf_token %}
+                        <p>No hay publicaciones todavía. ¡Sé el primero en agregar una crónica de viaje!</p>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

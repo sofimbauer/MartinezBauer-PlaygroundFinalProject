@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block h1_header %} 
+Editar crónica 
+<h3>Modifica tu Historia a tu Gusto</h3>
+{% endblock h1_header %}
+
+{% block main%}
+<section class="bg-light">
+    <div class="container">
+        <form class="p-3 p-lg-4" actions={%url 'editar_cronica' pk=1%} method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table table-borderless col-md-5 fst-italic">
+                {{form.media}}
+                {{form.as_table}}
+            </table>
+            <input class="btn btn-primary" type='submit' value='Editar'>
+            <a class="btn btn-primary" href={% url 'cronicas' %} role="button"> Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock main%}

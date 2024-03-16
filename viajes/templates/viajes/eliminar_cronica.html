@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block h1_header%}
+Eliminar la crónicas
+<h3>Elimina tu Huella Viajera</h3>
+{% endblock h1_header %}
+{% block main%}
+<section class="bg-light">
+    <div class="container px-4 px-lg-5">
+        <form class="p-3 p-lg-4 lead fst-italic" method="POST">
+            {% csrf_token %}
+            <p>¿Desea eliminar la crónica de tu viaje?</p>
+            <div>
+                <button class="btn btn-outline-primary fst-italic"> Eliminar</button>
+                <a class="btn btn-outline-primary fst-italic" href={% url 'cronicas' %} role="button"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock main%}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block h1_header %}
+Te deslogueaste correctamente
+{% endblock h1_header %}
+
+{% block main %}
+<section class="bg-light py-5">
+    <div class="container">
+        <p class="lead text-center">¿Quieres <a href="{% url 'login' %}" class="text-primary">iniciar sesión</a> de nuevo?</p>
+    </div>
+</section>
+{% endblock main %}
+

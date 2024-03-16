@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block h1_header %}
+Detalle de la crónica
+<h3>Explora los Secretos de esta Crónica</h3>
+{% endblock h1_header %}
+
+{% block main %}
+<section class="bg-light py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <img src="{{ cronicas.postal.url }}" class="card-img-top" alt="Imagen de {{ cronicas }}" height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cronicas.destino }}</h5>
+                        <p class="card-text"><strong>Fecha del viaje:</strong> {{ cronicas.fecha_viaje }}</p>
+                        <p class="card-text"><strong>Autor:</strong> {{ cronicas.autor }}</p>
+                        <p class="card-text"><strong>Actividades realizadas:</strong> {{ cronicas.actividades_realizadas}}</p>
+                        <p class="card-text"><strong>Descripción:</strong> {{ cronicas.descripcion | safe }}</p>
+                        {% if request.user.is_authenticated and cronicas.autor == request.user %}
+                            <a href="{% url 'editar_cronica' pk=cronicas.id %}" class="btn btn-outline-primary fst-italic">Editar</a>
+                            <a href="{% url 'eliminar_cronica' pk=cronicas.id %}" class="btn btn-outline-primary fst-italic">Eliminar</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}
+
+
+
+
